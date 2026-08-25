@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yue Zhang</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #666;
+    --line: #e4e4e4;
+    --bg: #ffffff;
+    --accent: #7a5c3e;
+    --max-width: 760px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'Georgia', 'Iowan Old Style', serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  header {
+    display: flex;
+    align-items: stretch;
+    gap: 32px;
+    padding: 72px 0 32px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .headshot {
+    flex: 0 0 calc(50% - 16px);
+    width: calc(50% - 16px);
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  .header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 0 0 calc(50% - 16px);
+    min-width: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0 0 6px;
+    letter-spacing: 0.01em;
+  }
+
+  .title-line {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin: 2px 0;
+  }
+
+  nav {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    margin-top: 28px;
+  }
+
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 28px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav a:hover {
+    border-bottom: 1px solid var(--accent);
+  }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 24px;
+  }
+
+  p {
+    font-size: 1.05rem;
+    margin: 0 0 16px;
+  }
+
+  .paper {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .paper:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .paper-title {
+    font-size: 1.1rem;
+    margin: 0 0 6px;
+    font-weight: 400;
+  }
+
+  .paper-title a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .paper-title a:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  .paper-status {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+
+  .research-group {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 40px 0 16px;
+  }
+
+  .paper-note {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .paper-links {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    margin: 12px 0 0;
+  }
+
+  .paper-links a {
+    color: var(--accent);
+    text-decoration: none;
+    margin-right: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .paper-links a:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  .paper-coauthors {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+
+  .paper-coauthors a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .paper-coauthors a:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  .paper-abstract {
+    margin-top: 12px;
+  }
+
+  .paper-abstract p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 10px 0 0;
+  }
+
+  .paper-presentation {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 10px 0 0;
+  }
+
+  .paper-presentation sup {
+    color: var(--accent);
+  }
+
+  .paper-footnote {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .paper-footnote sup {
+    color: var(--accent);
+  }
+
+  .contact-list {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact-list li {
+    margin-bottom: 12px;
+    font-size: 0.98rem;
+  }
+
+  .contact-list a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-list a:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  footer {
+    padding: 32px 0 60px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .edit-note {
+    background: #faf7f2;
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 18px;
+  }
+
+  @media (max-width: 600px) {
+    header {
+      padding: 48px 0 24px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    h1 { font-size: 1.6rem; }
+    nav a { display: inline-block; margin-bottom: 8px; }
+    .headshot { width: 120px; height: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <img class="headshot" src="headshot.jpg" alt="Yue Zhang">
+    <div class="header-text">
+      <h1>Yue Zhang</h1>
+      <p class="title-line">PhD Candidate in Finance</p>
+      <p class="title-line">Bayes Business School, City St George's, University of London</p>
+      <p class="title-line">&nbsp;</p>
+      <p class="title-line">&nbsp;</p>
+      <p class="title-line">yuezhang882@gmail.com</p>
+      <p class="paper-title">
+        <a href="CV_Yue.pdf" target="_blank" rel="noopener">CV</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://linkedin.com/in/yue-zhang-6b59601b8" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      Welcome to my website! I am Yue Zhang, a final-year PhD Candidate in Finance at Bayes Business School (formerly Cass), City St George's, University of London.
+      My research focuses on institutional investors and asset pricing, with a particular interest in financial intermediation, market structure, and derivatives.
+    </p>
+    <p>
+      I am on the job market in the 2026&ndash;2027 cycle.
+    </p>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+
+    <div class="paper">
+      <p class="paper-status">Job Market Paper</p>
+      <p class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7276780" target="_blank" rel="noopener">Cash vs. In-Kind Structure and ETF Arbitrage Efficiency</a></p>  
+      <div class="paper-abstract">
+        <p>
+          I document that 75% of U.S. corporate bond ETFs use more cash in settling creations and redemptions with authorized participants (APs) than the maximum the SEC permits for in-kind classification. Settlement structure is associated with a sharp asymmetry in AP arbitrage. Relative to in-kind ETFs, cash-settled ETFs exhibit weaker arbitrage activity in creation, when ETFs trade at a premium, but arbitrage activity nearly five times stronger in redemption, when ETFs trade at a discount. To interpret these patterns, I develop a model in which settlement structure determines which frictions an arbitrage trade faces: in-kind settlement exposes APs to the cost of holding illiquid bonds, whereas cash settlement requires them to surrender liquid assets. Regulatory capacity determines which APs can respond to these differences. Consistent with the model, the asymmetry is more pronounced when the underlying bonds are more illiquid and among APs with greater regulatory capacity. These findings highlight a regulatory spillover to ETF arbitrage efficiency through financial intermediaries.
+        </p>
+      </div>
+      <p class="paper-presentation"><strong>Presented at:</strong> 2026 Finance PhD Research Days (Bayes Business School), 2026 Pre-EFA PhD Program Poster Session</p>
+    </div>
+
+    <h3 class="research-group">Working Papers</h3>
+
+    <div class="paper">
+      <p class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5192922" target="_blank" rel="noopener">Decoding Derivatives Use by ETFs</a></p>
+      <p class="paper-coauthors">
+        <strong>with</strong> <a href="https://sites.google.com/site/shawnyxiaoxiao" target="_blank" rel="noopener">Xiao Xiao</a> and <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=13313" target="_blank" rel="noopener">Aneel Keswani</a>
+      </p>
+      <div class="paper-abstract">
+        <p>
+          We provide the first systematic study of derivative use by exchange-traded funds (ETFs). Over half of ETFs use derivatives, and following a 2019 rule permitting in-kind option transfers, ETF option use increases sharply relative to mutual funds, driven primarily by new product entry. We classify derivative-using ETFs into five economically distinct strategies and find that long-futures ETFs have lower fees than non-derivative users, while synthetic-exposure ETFs are more expensive and perform worse. Although buffer and options-income ETFs have similar exposures and risk-return profiles, they package derivative returns differently and attract distinct investor clienteles: flows into buffer ETFs favor lower tax burdens, whereas flows into options-income ETFs increase with distribution yields despite higher tax burdens. Our findings highlight derivative implementation as an important dimension of ETF product differentiation and investor demand.
+        </p>
+      </div>
+      <p class="paper-presentation"><strong>Presented at:</strong> 2026 EasternFA, 2026 AFA Poster Session, 2025 FMA, 2025 Trans-Atlantic Doctoral Conference, 2025 New Perspective and New Products in Asset Management, 2025 Finance PhD Research Days (Bayes Business School), 2025 Tri-City Bridge Workshop Poster Session, 2025 Cancun Asset Pricing and Derivatives conference<sup>*</sup>,Development Bank of Japan<sup>*</sup>, Bristol University<sup>*</sup>, Católica Porto Business School<sup>*</sup>, Hong Kong Baptist University<sup>*</sup>, Nottingham University<sup>*</sup>, Vienna Graduate School of Finance<sup>*</sup></p>
+      <p class="paper-footnote"><sup>*</sup>Presented by a coauthor</p>
+    </div>
+
+
+
+    <div class="paper">
+      <p class="paper-title">Uncovering Institutional Option Trading Skill: Evidence from Daily ETF Holdings</p>
+      <p class="paper-coauthors">
+        <strong>with</strong> <a href="https://sites.google.com/site/laixuduke/" target="_blank" rel="noopener">Lai Xu</a> and <a href="https://sites.google.com/site/shawnyxiaoxiao" target="_blank" rel="noopener">Xiao Xiao</a>
+      </p>
+      <p class="paper-note">
+        We use daily ETF holdings to examine institutional option trading and identify evidence of persistent trading skill across institutions.
+      </p>
+      <p class="paper-presentation"><strong>Presented at:</strong> Bristol University<sup>*</sup></p>
+      <p class="paper-footnote"><sup>*</sup>Presented by a coauthor</p>
+    </div>
+  </section>
+
+
+  <footer>
+    &copy; 2026 Yue Zhang
+  </footer>
+</div>
+
+</body>
+</html>
